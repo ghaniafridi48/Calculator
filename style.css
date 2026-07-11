@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+    width: 800px;
+    height: 900px;
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main{
+    width: 600px;
+    height: 700px;
+    border: 2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main button{
+    width: 33.3%;
+    height: 20%;
+    /* border: 2px solid ;     */
+}
+.clear button{
+    width: 600px;
+    height: 150px;
+}
+
+.display{
+    border: 2px solid green;
+     width: 600px;
+    height: 150px;
+    align-content: center;
+    text-align: center;
+}
