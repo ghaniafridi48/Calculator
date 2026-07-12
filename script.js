@@ -50,13 +50,21 @@ document.querySelector('.main').addEventListener('click',(e) => {
     if(e.target.tagName === 'BUTTON'){
         let text = e.target.textContent;
         if (text === '+' || text === '-' || text === '*' || text === '/'){
+            
+            if (first_num !== '' && operator !== '' && second_num !== '') {
+                let result = operate(Number(first_num),Number(second_num),operator);
+                display.textContent = result;
+                first_num = String(result);
+                second_num = '';
+            }
             operator = text;
+            
         }
         else if(text === '='){
             display.textContent = operate(Number(first_num),Number(second_num),operator);
-
-       }
-       else{
+            
+        }
+        else{
             if (operator === '') {
                 first_num += text;
                 display.textContent = first_num;
