@@ -1,3 +1,8 @@
+// variables
+let first_num = '';
+let second_num = '';
+let operator = '';
+
 // basic functions
 function add(firstNum,secondNum) {
     return firstNum + secondNum;
@@ -12,10 +17,6 @@ function divide(firstNum,secondNum) {
     return firstNum / secondNum;
 }
 
-// variables
-let first_num;
-let second_num;
-let operator;
 
 //operate function
 
@@ -42,5 +43,30 @@ switch (operator) {
 }
 
 }
+//functions that update number variables when the calculator’s digit buttons are clicked.
+let display = document.querySelector('.display');
 
-console.log(operate(2,3,'*'));
+document.querySelector('.main').addEventListener('click',(e) => {
+    if(e.target.tagName === 'BUTTON'){
+        let text = e.target.textContent;
+        if (text === '+' || text === '-' || text === '*' || text === '/'){
+            operator = text;
+        }
+        else if(text === '='){
+            display.textContent = operate(Number(first_num),Number(second_num),operator);
+
+       }
+       else{
+            if (operator === '') {
+                first_num += text;
+                display.textContent = first_num;
+            }
+            else{
+                second_num += text;
+                display.textContent = second_num;
+            }
+
+       }
+    }
+});
+
