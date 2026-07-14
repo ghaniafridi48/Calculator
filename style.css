@@ -19,6 +19,10 @@
     height: 200px;
     align-content: center;
     text-align:center ;
+    font-size: xx-large;
+    color: rgb(255, 66, 66);
+    background-color: azure;
+
 }
 .main{
     display: flex;
@@ -29,9 +33,13 @@
 .main button {
     width: 33.3%;
     height: 20%;
+    font-size: xx-large;
+
 }
 
 #clearbtn{
     width: 100%;
+    font-size: xx-large;
+    color: green;
 }
 
