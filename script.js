@@ -1,79 +1,95 @@
-// variables
-let first_num = '';
-let second_num = '';
+let one = '';
+let two = '';
 let operator = '';
 
-// basic functions
-function add(firstNum,secondNum) {
-    return firstNum + secondNum;
+function add(num1,num2) {
+    return num1 + num2;
 }
-function subtract(firstNum,secondNum) {
-    return firstNum - secondNum;
+function sub(num1,num2) {
+    return num1 - num2;
 }
-function multiply(firstNum,secondNum) {
-    return firstNum * secondNum;
+function mul(num1,num2) {
+    return num1 * num2;
 }
-function divide(firstNum,secondNum) {
-    return firstNum / secondNum;
-}
-
-
-//operate function
-
-function operate(num1,num2,operator){
-switch (operator) {
-    case '+':
-        return add(num1,num2);
-        break;
-
-    case '-':
-        return subtract(num1,num2);
-        break;
-
-    case '*':
-        return multiply(num1,num2);
-        break;
-
-    case '/':
-        return divide(num1,num2);
-        break;
-    default:
-        break;
+function divide(num1,num2) {
+    if (num2 === 0) {
+        return "nope"; 
+    }
+    return num1 / num2;
 }
 
-}
-//functions that update number variables when the calculator’s digit buttons are clicked.
-let display = document.querySelector('.display');
+function operate(num1,num2,operator) {
+    switch (operator) {
+        case '+':
+            return add(num1,num2);
+            break;
 
-document.querySelector('.main').addEventListener('click',(e) => {
-    if(e.target.tagName === 'BUTTON'){
-        let text = e.target.textContent;
-        if (text === '+' || text === '-' || text === '*' || text === '/'){
+        case '-':
+            return sub(num1,num2);
+            break;
             
-            if (first_num !== '' && operator !== '' && second_num !== '') {
-                let result = operate(Number(first_num),Number(second_num),operator);
-                display.textContent = result;
-                first_num = String(result);
-                second_num = '';
+        case '*':
+            return mul(num1,num2);
+            break;
+            
+        case '/':
+            return divide(num1,num2);
+            break;
+
+        default:
+            break;
+    }
+}
+
+
+let main  = document.querySelector('.main');
+main.addEventListener('click',(e) => {
+    if (e.target.tagName === 'BUTTON') {
+        let text = e.target.textContent;
+        let display = document.querySelector('.display');//to manage display
+
+        if (text === '+' || text === '-' || text === '*' || text === '/') {
+            if (one !== '' && operator !== '' && two !== ''){
+                let intermediateResult = operate(Number(one), Number(two), operator);
+                display.textContent = intermediateResult;
+                one = String(intermediateResult);
+                two = '';
             }
             operator = text;
-            
+            display.textContent = operator;
         }
-        else if(text === '='){
-            display.textContent = operate(Number(first_num),Number(second_num),operator);
-            
+        
+        else if (text === '=') {
+            let result = operate(Number(one),Number(two),operator);
+            if (result !== 'nope') {
+                
+                if (result % 1 !== 0) {
+                    result = result.toFixed(4);
+                }
+            }
+            display.textContent = result;
+            one = String(result);
+            two = '';
+            operator = '';
+
+        }
+        else if(text === 'Clear'){
+            display.textContent = '';
+            one = '';
+            two = '';
+            operator = '';
+
         }
         else{
             if (operator === '') {
-                first_num += text;
-                display.textContent = first_num;
+                one += text;
+                display.textContent = one;
             }
             else{
-                second_num += text;
-                display.textContent = second_num;
+                two += text;
+                display.textContent = two;
             }
+        }
 
-       }
     }
-});
-
+})

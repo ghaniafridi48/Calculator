@@ -1,35 +1,37 @@
 *{
     box-sizing: border-box;
 }
+
 .container{
-    width: 800px;
-    height: 900px;
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
+    border: 2px solid;
+    width: 600px;
+    height: 800px;
+    justify-content: center;
     align-items: center;
+    justify-self: center;
+
+}
+.display{
+    border: 2px solid;
+    width: 600px;
+    height: 200px;
+    align-content: center;
+    text-align:center ;
 }
 .main{
-    width: 600px;
-    height: 700px;
-    border: 2px solid red;
     display: flex;
+    width: 600px;
+    height: 600px;
     flex-wrap: wrap;
 }
-.main button{
+.main button {
     width: 33.3%;
     height: 20%;
-    /* border: 2px solid ;     */
-}
-.clear button{
-    width: 600px;
-    height: 150px;
 }
 
-.display{
-    border: 2px solid green;
-     width: 600px;
-    height: 150px;
-    align-content: center;
-    text-align: center;
+#clearbtn{
+    width: 100%;
 }
+
