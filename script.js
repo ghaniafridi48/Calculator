@@ -38,7 +38,6 @@ switch (operator) {
         return divide(num1,num2);
         break;
     default:
-        '??????????'
         break;
 }
 
